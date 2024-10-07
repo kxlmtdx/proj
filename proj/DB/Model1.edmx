@@ -1,0 +1,561 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ХУЙГОЙДАПЕНИСЗАЛУПАModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Car_Price">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Price_Car" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mark" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Number" Type="int" Nullable="false" />
+          <Property Name="Password" Type="int" Nullable="false" />
+          <Property Name="ID_Role" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Car_Price" Type="int" Nullable="false" />
+          <Property Name="ID_Mark" Type="int" Nullable="false" />
+          <Property Name="ID_Person" Type="int" Nullable="false" />
+          <Property Name="ID_Type" Type="int" Nullable="false" />
+          <Property Name="ID_Type_KPP" Type="int" Nullable="false" />
+          <Property Name="ID_Type_Privod" Type="int" Nullable="false" />
+          <Property Name="ID_Year_Car" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_KPP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_KPP" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_Privod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type_Privod" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Тип машины" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Year_Car">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Person_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Car_Price">
+          <End Role="Car_Price" Type="Self.Car_Price" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car_Price">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Car_Price" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Mark">
+          <End Role="Mark" Type="Self.Mark" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mark">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Mark" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Type">
+          <End Role="Type1" Type="Self.Type1" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Type_KPP">
+          <End Role="Type_KPP" Type="Self.Type_KPP" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_KPP">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Type_KPP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Type_Privod">
+          <End Role="Type_Privod" Type="Self.Type_Privod" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Privod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Type_Privod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Year_Car">
+          <End Role="Year_Car" Type="Self.Year_Car" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Year_Car">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Year_Car" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ХУЙГОЙДАПЕНИСЗАЛУПАModelContainer">
+          <EntitySet Name="Car_Price" EntityType="Self.Car_Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mark" EntityType="Self.Mark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff1" EntityType="Self.Staff1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_KPP" EntityType="Self.Type_KPP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_Privod" EntityType="Self.Type_Privod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type1" EntityType="Self.Type1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Year_Car" EntityType="Self.Year_Car" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Person_Role" Association="Self.FK_Person_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Car_Price" Association="Self.FK_Staff1_Car_Price">
+            <End Role="Car_Price" EntitySet="Car_Price" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Mark" Association="Self.FK_Staff1_Mark">
+            <End Role="Mark" EntitySet="Mark" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Person" Association="Self.FK_Staff1_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Type" Association="Self.FK_Staff1_Type">
+            <End Role="Type1" EntitySet="Type1" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Type_KPP" Association="Self.FK_Staff1_Type_KPP">
+            <End Role="Type_KPP" EntitySet="Type_KPP" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Type_Privod" Association="Self.FK_Staff1_Type_Privod">
+            <End Role="Type_Privod" EntitySet="Type_Privod" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Year_Car" Association="Self.FK_Staff1_Year_Car">
+            <End Role="Year_Car" EntitySet="Year_Car" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ХУЙГОЙДАПЕНИСЗАЛУПАModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Car_Price">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Price_Car" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff1_Car_Price" FromRole="Car_Price" ToRole="Staff1" />
+        </EntityType>
+        <EntityType Name="Mark">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mark1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff1_Mark" FromRole="Mark" ToRole="Staff1" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="Int32" Nullable="false" />
+          <Property Name="ID_Role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_Person_Role" FromRole="Person" ToRole="Role" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff1_Person" FromRole="Person" ToRole="Staff1" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Person_Role" FromRole="Role" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Staff1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Car_Price" Type="Int32" Nullable="false" />
+          <Property Name="ID_Mark" Type="Int32" Nullable="false" />
+          <Property Name="ID_Person" Type="Int32" Nullable="false" />
+          <Property Name="ID_Type" Type="Int32" Nullable="false" />
+          <Property Name="ID_Type_KPP" Type="Int32" Nullable="false" />
+          <Property Name="ID_Type_Privod" Type="Int32" Nullable="false" />
+          <Property Name="ID_Year_Car" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Car_Price" Relationship="Self.FK_Staff1_Car_Price" FromRole="Staff1" ToRole="Car_Price" />
+          <NavigationProperty Name="Mark" Relationship="Self.FK_Staff1_Mark" FromRole="Staff1" ToRole="Mark" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Staff1_Person" FromRole="Staff1" ToRole="Person" />
+          <NavigationProperty Name="Type1" Relationship="Self.FK_Staff1_Type" FromRole="Staff1" ToRole="Type1" />
+          <NavigationProperty Name="Type_KPP" Relationship="Self.FK_Staff1_Type_KPP" FromRole="Staff1" ToRole="Type_KPP" />
+          <NavigationProperty Name="Type_Privod" Relationship="Self.FK_Staff1_Type_Privod" FromRole="Staff1" ToRole="Type_Privod" />
+          <NavigationProperty Name="Year_Car" Relationship="Self.FK_Staff1_Year_Car" FromRole="Staff1" ToRole="Year_Car" />
+        </EntityType>
+        <EntityType Name="Type_KPP">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_KPP1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff1_Type_KPP" FromRole="Type_KPP" ToRole="Staff1" />
+        </EntityType>
+        <EntityType Name="Type_Privod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type_Privod1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff1_Type_Privod" FromRole="Type_Privod" ToRole="Staff1" />
+        </EntityType>
+        <EntityType Name="Type1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Тип_машины" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff1_Type" FromRole="Type1" ToRole="Staff1" />
+        </EntityType>
+        <EntityType Name="Year_Car">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff1_Year_Car" FromRole="Year_Car" ToRole="Staff1" />
+        </EntityType>
+        <Association Name="FK_Staff1_Car_Price">
+          <End Role="Car_Price" Type="Self.Car_Price" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car_Price">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Car_Price" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Mark">
+          <End Role="Mark" Type="Self.Mark" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mark">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Mark" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="ID_Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Type">
+          <End Role="Type1" Type="Self.Type1" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Type_KPP">
+          <End Role="Type_KPP" Type="Self.Type_KPP" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_KPP">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Type_KPP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Type_Privod">
+          <End Role="Type_Privod" Type="Self.Type_Privod" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_Privod">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Type_Privod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff1_Year_Car">
+          <End Role="Year_Car" Type="Self.Year_Car" Multiplicity="1" />
+          <End Role="Staff1" Type="Self.Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Year_Car">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ID_Year_Car" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ХУЙГОЙДАПЕНИСЗАЛУПАEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Car_Price" EntityType="Self.Car_Price" />
+          <EntitySet Name="Mark" EntityType="Self.Mark" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Staff1" EntityType="Self.Staff1" />
+          <EntitySet Name="Type_KPP" EntityType="Self.Type_KPP" />
+          <EntitySet Name="Type_Privod" EntityType="Self.Type_Privod" />
+          <EntitySet Name="Type1" EntityType="Self.Type1" />
+          <EntitySet Name="Year_Car" EntityType="Self.Year_Car" />
+          <AssociationSet Name="FK_Staff1_Car_Price" Association="Self.FK_Staff1_Car_Price">
+            <End Role="Car_Price" EntitySet="Car_Price" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Mark" Association="Self.FK_Staff1_Mark">
+            <End Role="Mark" EntitySet="Mark" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_Role" Association="Self.FK_Person_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Person" Association="Self.FK_Staff1_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Type" Association="Self.FK_Staff1_Type">
+            <End Role="Type1" EntitySet="Type1" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Type_KPP" Association="Self.FK_Staff1_Type_KPP">
+            <End Role="Type_KPP" EntitySet="Type_KPP" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Type_Privod" Association="Self.FK_Staff1_Type_Privod">
+            <End Role="Type_Privod" EntitySet="Type_Privod" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff1_Year_Car" Association="Self.FK_Staff1_Year_Car">
+            <End Role="Year_Car" EntitySet="Year_Car" />
+            <End Role="Staff1" EntitySet="Staff1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ХУЙГОЙДАПЕНИСЗАЛУПАModelContainer" CdmEntityContainer="ХУЙГОЙДАПЕНИСЗАЛУПАEntities1">
+          <EntitySetMapping Name="Car_Price">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Car_Price">
+              <MappingFragment StoreEntitySet="Car_Price">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Price_Car" ColumnName="Price_Car" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mark">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Mark">
+              <MappingFragment StoreEntitySet="Mark">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Mark1" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID_Role" ColumnName="ID_Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff1">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Staff1">
+              <MappingFragment StoreEntitySet="Staff1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ID_Car_Price" ColumnName="ID_Car_Price" />
+                <ScalarProperty Name="ID_Mark" ColumnName="ID_Mark" />
+                <ScalarProperty Name="ID_Person" ColumnName="ID_Person" />
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="ID_Type_KPP" ColumnName="ID_Type_KPP" />
+                <ScalarProperty Name="ID_Type_Privod" ColumnName="ID_Type_Privod" />
+                <ScalarProperty Name="ID_Year_Car" ColumnName="ID_Year_Car" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_KPP">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Type_KPP">
+              <MappingFragment StoreEntitySet="Type_KPP">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type_KPP1" ColumnName="Type_KPP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_Privod">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Type_Privod">
+              <MappingFragment StoreEntitySet="Type_Privod">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type_Privod1" ColumnName="Type_Privod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type1">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Type1">
+              <MappingFragment StoreEntitySet="Type1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Тип_машины" ColumnName="Тип машины" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Year_Car">
+            <EntityTypeMapping TypeName="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Year_Car">
+              <MappingFragment StoreEntitySet="Year_Car">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

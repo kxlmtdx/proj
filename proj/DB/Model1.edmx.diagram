@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6c379c648f0043be8db302aa00267135" Name="Diagram1">
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Car_Price" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Mark" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Person" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Role" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Staff1" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Type_KPP" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Type_Privod" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Type1" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ХУЙГОЙДАПЕНИСЗАЛУПАModel.Year_Car" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Staff1_Car_Price" ManuallyRouted="false" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Staff1_Mark" ManuallyRouted="false" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Person_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Staff1_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Staff1_Type" ManuallyRouted="false" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Staff1_Type_KPP" ManuallyRouted="false" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Staff1_Type_Privod" ManuallyRouted="false" />
+        <AssociationConnector Association="ХУЙГОЙДАПЕНИСЗАЛУПАModel.FK_Staff1_Year_Car" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
