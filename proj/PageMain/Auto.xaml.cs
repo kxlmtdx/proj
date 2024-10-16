@@ -22,8 +22,11 @@ namespace proj.Main
     /// <summary>
     /// Логика взаимодействия для Auto.xaml
     /// </summary>
+
     public partial class Auto : Page
     {
+        private Random _random = new Random();
+
         public Auto()
         {
             InitializeComponent();
@@ -41,11 +44,11 @@ namespace proj.Main
             CmbGroup1.ItemsSource = AppConnect.model0db.Type_Privod.ToList();
 
             CmbGroup2.SelectedValuePath = "Id";
-            CmbGroup2.DisplayMemberPath = "Тип_Машины";
+            CmbGroup2.DisplayMemberPath = "Тип_машины";
             CmbGroup2.ItemsSource = AppConnect.model0db.Type1.ToList();
 
             CmbGroup3.SelectedValuePath = "Id";
-            CmbGroup3.DisplayMemberPath = "Year";
+            CmbGroup3.DisplayMemberPath = "year";
             CmbGroup3.ItemsSource = AppConnect.model0db.Year_Car.ToList();
 
 
@@ -85,6 +88,8 @@ namespace proj.Main
             int privodType = Convert.ToInt32(CmbGroup1.SelectedValue);
             var govno = AppConnect.model0db.Staff1.Where(x => x.ID_Type == privodType).Select(x => new { prType = x.Type_Privod.Type_Privod1 }).ToList();
 
+            int cost = Convert.ToInt32(CmbGroup.SelectedValue);
+            var outputcost = AppConnect.model0db.Staff1.Where(x => x.ID_Car_Price == cost).Select(x => new { CarCost = x.Car_Price.Price_Car }).ToList();
 
             int carType = Convert.ToInt32(CmbGroup2.SelectedValue);
             var carType1 = AppConnect.model0db.Staff1.Where(x => x.ID_Type == carType).Select(x => new { carType = x.Type1.Тип_машины }).ToList();
@@ -97,25 +102,42 @@ namespace proj.Main
                 .Select(x => new
                 {
                     CarBrand = x.Mark.Mark1,
-                    PrivodType = x.Type_Privod.Type_Privod1,
-                    CarType = x.Type1.Тип_машины + x.Year_Car.year
+                    PrivodType = x.Type_Privod.Type_Privod1 + "привод, " + x.Type1.Тип_машины + ", " + x.Year_Car.year + "г.",
+                    CarType = x.Car_Price.Price_Car,
                 })
                 .ToList();
 
-            // Create and populate DataTable
             DataTable dt = new DataTable();
             dt.Columns.Add("Марка авто");
             dt.Columns.Add("Описание авто");
             dt.Columns.Add("Цена авто");
-            dt.Columns.Add("Фото авто");
+            dt.Columns.Add("ImagePath");
 
             foreach (var car in carDetails)
             {
-                dt.Rows.Add(car.CarBrand, car.PrivodType, car.CarType);
+                if (marksId == 1)
+                {
+                    int randomValue = _random.Next(1, 4);
+                    string imagePath = $"temp/B{randomValue}.jpg";
+                    dt.Rows.Add(car.CarBrand, car.PrivodType, car.CarType, imagePath);
+                }
+                else if (marksId == 2)
+                {
+                    int randomValue = _random.Next(1, 4);
+                    string imagePath = $"temp/M{randomValue}.jpg";
+                    dt.Rows.Add(car.CarBrand, car.PrivodType, car.CarType, imagePath);
+                }
+                else 
+                {
+                    int randomValue = _random.Next(1, 4);
+                    string imagePath = $"temp/L{randomValue}.jpg";
+                    dt.Rows.Add(car.CarBrand, car.PrivodType, car.CarType, imagePath);
+                }
+                
             }
 
-            // Set the DataTable as the data source for the grid
             carGrid.ItemsSource = dt.DefaultView;
         }
+
     }
 }

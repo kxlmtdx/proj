@@ -171,6 +171,7 @@
 
 
     <Grid Margin="0,-100,0,10">
+        
         <Image Source="Res\backsearch.png" Stretch="Fill" Margin="0,-100,-15,-16"/>
 
         <StackPanel Orientation="Horizontal" Margin="50,77,30,0" Height="44" RenderTransformOrigin="0.502,0.479" VerticalAlignment="Top">
@@ -206,20 +207,37 @@
             <ComboBox Width="144" Margin="0,0,10,0" VerticalAlignment="Center" x:Name="CmbGroup3" BorderBrush="White" Height="24" Background="White"/>
             <Button BorderBrush="Transparent" Foreground="White" Content="Найти" Click="Search_Click"
              TextElement.FontFamily="Calibri" Width="87" Height="35" Background="#424da3" Margin="2,0,5,0" />
-            
+
+
         </StackPanel>
         <StackPanel Margin="-9,126,0,0">
-            <DataGrid x:Name="carGrid" AutoGenerateColumns="False" Width="819" IsReadOnly="True">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Марка авто" Binding="{Binding [Марка авто]}" Width="100"/>
-                    <DataGridTextColumn Header="Описание" Binding="{Binding [Описание авто]}" Width="250"/>
-                    <DataGridTextColumn Header="Цена" Binding="{Binding [Цена авто]}" Width="150"/>
-                    <DataGridTextColumn Header="Фото" Binding="{Binding [Фото авто]}" Width="150"/>
-                </DataGrid.Columns>
-            </DataGrid>
+
+            <ScrollViewer VerticalScrollBarVisibility="Visible" CanContentScroll="True" >
+                <DataGrid x:Name="carGrid" AutoGenerateColumns="False" Width="819" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Марка авто" Binding="{Binding [Марка авто]}" Width="100"/>
+                        <DataGridTextColumn Header="Описание" Binding="{Binding [Описание авто]}" Width="250"/>
+                        <DataGridTextColumn Header="Цена" Binding="{Binding [Цена авто]}" Width="150"/>
+                        <DataGridTemplateColumn Header="Image">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding ImagePath}" Stretch="Fill" Width="200" Height="100"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+           
         </StackPanel>
         <Image Margin="430,327,-430,-327" Source="/backsearch.png" Stretch="Fill"/>
-        
-        
+        <Image Margin="511,416,-209,-216" Source="/shocked-iphone.gif" Stretch="Fill"/>
+        <Image Margin="447,202,-67,-82" Source="/Png.png" Stretch="Fill"/>
+        <Image Margin="536,208,-56,12" Source="/915663d69a938c59c278e6c137a32728.jpg" Stretch="Fill"/>
+        <Image Margin="359,287,-274,23" Source="/1.jpg" Stretch="Fill"/>
+        <Image Margin="322,333,-252,-265" Source="/3.jpg" Stretch="Fill"/>
+        <Image Margin="381,293,-781,-383" Source="/2.jpg" Stretch="Fill"/>
+
+
     </Grid>
 </Page>
